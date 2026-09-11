@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prasanth Weds Yogalakshmi | Wedding Invitation</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #7b1113;       /* Rich Deep Crimson / Maroon */
+      --secondary: #d4af37;     /* Warm Gold */
+      --gold-light: #fef4cf;
+      --bg-dark: #120305;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --text-main: #f9f9f9;
+      --text-muted: #e0d0b0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Envelope / Wax Seal Overlay */
+    #seal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: radial-gradient(circle, #2d070b 0%, #100203 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: opacity 1s ease-in-out, visibility 1s;
+      cursor: pointer;
+    }
+
+    .seal-card {
+      border: 1px solid var(--secondary);
+      padding: 40px 24px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+      max-width: 90%;
+      width: 360px;
+    }
+
+    .seal-card h2 {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 4px;
+      color: var(--secondary);
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .seal-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+    }
+
+    .wax-seal-btn {
+      width: 95px;
+      height: 95px;
+      background: radial-gradient(circle, #b91c1c 20%, #680507 90%);
+      border: 3px solid #eab308;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+      font-family: 'Cinzel', serif;
+      color: #fef08a;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse 2.2s infinite;
+    }
+
+    .wax-seal-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.7);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Main Container */
+    main {
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      padding-bottom: 60px;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .invitation-badge {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
+      color: var(--secondary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .couple-name {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .ampersand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      color: var(--secondary);
+      margin: -10px 0;
+      display: block;
+    }
+
+    .welcome-text {
+      margin-top: 25px;
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 550px;
+    }
+
+    /* Countdown Timer */
+    .countdown-section {
+      background: var(--card-bg);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 16px;
+      padding: 40px 20px;
+      margin-top: 20px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: var(--secondary);
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
+
+    .timer-grid {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .timer-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 15px 12px;
+      border-radius: 10px;
+      min-width: 70px;
+    }
+
+    .timer-box .num {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      color: var(--gold-light);
+    }
+
+    .timer-box .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* Event Ceremony Details */
+    .ceremony-card {
+      background: radial-gradient(circle, rgba(123, 17, 19, 0.35) 0%, rgba(18, 3, 5, 0.9) 100%);
+      border: 1px solid var(--secondary);
+      border-radius: 16px;
+      padding: 40px 24px;
+      margin: 30px 0;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    }
+
+    .ceremony-card h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--secondary);
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .date-tag {
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .time-tag {
+      font-size: 1rem;
+      color: var(--gold-light);
+      margin-bottom: 18px;
+    }
+
+    .venue-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 10px;
+    }
+
+    .venue-address {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 8px auto 25px auto;
+    }
+
+    /* Action Buttons */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 13px 22px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d4af37, #aa820a);
+      color: #120305;
+      border: none;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--secondary);
+      color: var(--gold-light);
+    }
+
+    .btn-outline:hover {
+      background: rgba(212, 175, 55, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* Hashtag */
+    .hashtag {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 2px;
+      color: var(--secondary);
+      margin-top: 30px;
+      font-size: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 30px 15px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Player -->
+  <audio id="bg-audio" loop preload="auto">
+    <source src="assets/bg-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Interactive Seal Opening Screen -->
+  <div id="seal-overlay" onclick="openInvitation()">
+    <div class="seal-card">
+      <h2>Wedding Invitation</h2>
+      <p>Two Souls, One Sacred Journey</p>
+      
+      <div class="wax-seal-btn">
+        <span>OPEN</span>
+      </div>
+      
+      <p style="margin-top: 20px; font-size: 0.8rem; letter-spacing: 1px;">
+        TAP SEAL TO REVEAL
+      </p>
+    </div>
+  </div>
+
+  <!-- Invitation Main Content -->
+  <main id="main-content">
+    
+    <section class="hero">
+      <p class="invitation-badge">Together With Their Families</p>
+      <h1 class="couple-name">Prasanth</h1>
+      <span class="ampersand">&amp;</span>
+      <h1 class="couple-name">Yogalakshmi</h1>
+
+      <p class="welcome-text">
+        As we take this sacred step into forever, our celebration would be incomplete without your warm presence and heartfelt blessings.
+      </p>
+    </section>
+
+    <!-- Countdown Section -->
+    <section>
+      <div class="countdown-section">
+        <h2 class="section-title">The Sacred Muhurtham</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Counting moments until the auspicious union</p>
+        
+        <div class="timer-grid">
+          <div class="timer-box">
+            <span class="num" id="days">00</span>
+            <span class="label">Days</span>
+          </div>
+          <div class="timer-box">
+            <span class="num" id="hours">00</span>
+            <span class="label">Hours</span>
+          </div>
+          <div class="timer-box">
+            <span class="num" id="mins">00</span>
+            <span class="label">Mins</span>
+          </div>
+          <div class="timer-box">
+            <span class="num" id="secs">00</span>
+            <span class="label">Secs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ceremony Details Card -->
+    <section>
+      <div class="ceremony-card">
+        <h3>Holy Muhurtham</h3>
+        <p class="date-tag">Thursday, September 17, 2026</p>
+        <p class="time-tag">09:00 AM – 10:30 AM IST</p>
+
+        <div style="width: 50px; height: 1px; background: var(--secondary); margin: 20px auto;"></div>
+
+        <p class="venue-title">Thiruttani Murugan Temple</p>
+        <p class="venue-address">
+          No.8 Tiruthani, oppst Murugan Kovil Uzavarsandhai Road Tiruvallur, Tamil Nadu 602001, Thiruttani Hill, Thiruttani, Tamil Nadu 631209
+        </p>
+
+        <div class="btn-group">
+          <!-- Direct Google Maps Navigation -->
+          <a class="btn btn-primary" target="_blank"
+             href="https://www.google.com/maps/search/?api=1&query=Thiruttani+Murugan+Temple+No.8+Uzavarsandhai+Road+Thiruttani+Hill+Tamil+Nadu+631209">
+            📍 Navigate with Google Maps
+          </a>
+
+          <!-- Google Calendar Sync -->
+          <a class="btn btn-outline" target="_blank"
+             href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding:+Prasanth+%26+Yogalakshmi&dates=20260917T033000Z/20260917T050000Z&details=Holy+Muhurtham+of+Prasanth+and+Yogalakshmi+at+Thiruttani+Murugan+Temple.&location=Thiruttani+Murugan+Temple,+Uzavarsandhai+Road,+Thiruttani+Hill,+Thiruttani,+Tamil+Nadu+631209">
+            📅 Add to Google Calendar
+          </a>
+        </div>
+
+        <p class="hashtag">#PrasanthWedsYogalakshmi</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>"Please consider this as our personal invitation to you and your family."</p>
+      <p style="margin-top: 8px; font-size: 0.8rem; color: #888;">With love & blessings from our families</p>
+    </footer>
+
+  </main>
+
+  <script>
+    function openInvitation() {
+      const overlay = document.getElementById('seal-overlay');
+      const main = document.getElementById('main-content');
+      const audio = document.getElementById('bg-audio');
+
+      // Attempt audio play upon interaction
+      if (audio) {
+        audio.play().catch(err => console.log('Audio playback waiting for permission'));
+      }
+
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        main.style.opacity = '1';
+      }, 700);
+    }
+
+    // Countdown Timer Target: September 17, 2026 09:00:00 AM IST (+05:30)
+    const weddingDate = new Date("2026-09-17T09:00:00+05:30").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("mins").innerText = "00";
+        document.getElementById("secs").innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("mins").innerText = String(minutes).padStart(2, '0');
+      document.getElementById("secs").innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
